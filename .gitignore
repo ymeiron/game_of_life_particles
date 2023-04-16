@@ -1,0 +1,11 @@
+*.h5
+*.h5part
+simulation
+.vscode
+test.cpp
+*.dat
+build
+*-env
+input
+output
+images
