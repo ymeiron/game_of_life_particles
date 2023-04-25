@@ -13,8 +13,10 @@ def concetric_circles(r_max: double) -> np.ndarray:
         y_ = r*np.sin(2*np.pi*i/n)
         x = np.append(x, x_)
         y = np.append(y, y_)
-    vx = np.zeros_like(x)
-    vy = np.zeros_like(x)
+    r = np.sqrt(x**2 + y**2)
+    r[r==0] = 1
+    vx = .125*y/r * (0.95 + np.random.rand(len(x))*.10)
+    vy = .250*x/r * (0.95 + np.random.rand(len(x))*.10)
     result = np.array([x, y, vx, vy])
     return result
 
@@ -69,7 +71,6 @@ if __name__ == '__main__':
     status = np.append(status, np.ones(100, dtype=int))
     count = len(x)
 
-    #x, y, vx, vy = uniform_grid(extent=400, density=args.density)
     # x, y, vx, vy = concetric_circles(r_max=200)
     # count = len(x)
     # status = np.zeros(count, dtype=int)
